@@ -1,33 +1,6 @@
 html, body{
     font-size: 16px;
 }
-.add-book{
-    position: fixed;
-    top: 0;
-    width: 100vw;
-    height: 100vh;
-    background: rgba(0, 0, 0, 0.3);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    transition: opacity .5s ease-in-out;
-}
-
-.hidden{
-    opacity: 0;
-    pointer-events: none;
-}
-
-#form-submit{
-    background-color: #fff;
-    padding: 1rem 2.5rem;
-    border-radius: 5px;
-    display: flex;
-    flex-direction: column;
-    gap: .75rem;
-    box-shadow: -1px 1px 5px 0px rgba(0,0,0,0.6);
-}
-
 legend{
     text-align: center;
     font-weight: bold;
@@ -39,4 +12,40 @@ fieldset{
     justify-content: flex-end;
     align-items: center;
     gap: .5rem;
+}
+.add-book{
+    position: fixed;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: opacity .5s ease-in-out;
+}
+.hidden{
+    opacity: 0;
+    pointer-events: none;
+}
+button{
+    background-color:#e0e0e0;
+    border: none;
+    border-radius:10px;
+	cursor:pointer;
+	color:#000000;
+	font-weight:bold;
+	padding: .5rem 1rem;
+}
+button:hover {
+	background-color:#d2cfcf;
+}
+#form-submit{
+    background-color: #fff;
+    padding: 1rem 2.5rem;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    gap: .75rem;
+    box-shadow: -1px 1px 5px 0px rgba(0,0,0,0.6);
 }

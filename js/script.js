@@ -1,9 +1,9 @@
 let myLibrary = [],
   booksInfo = document.querySelector("#books-info"),
   cancel = document.getElementById("cancel"),
-  addBookContainer = document.querySelector(".add-book");
-(showAddBook = document.getElementById("show-addbook")),
-  (saveBook = document.querySelector("#form-submit"));
+  addBookContainer = document.querySelector(".add-book"),
+  showAddBook = document.getElementById("show-addbook"),
+  saveBook = document.querySelector("#form-submit");
 
 function Book(title, author, pages, read) {
   this.title = title;
@@ -18,6 +18,7 @@ Book.prototype.getInfo = function () {
 function addToLibrary(book) {
   myLibrary.push(book);
   hideAddBook();
+  reset();
 }
 function sendToDOM() {
   booksInfo.textContent = "";
@@ -50,7 +51,13 @@ function sendToDOM() {
     booksInfo.appendChild(bookItem);
   }
 }
-
+const reset = () => {
+  document.getElementById("title").value = document.getElementById(
+    "author"
+  ).value = "";
+  document.getElementById("pages").value = "";
+  document.getElementById("read").checked = false;
+};
 const hideAddBook = () => {
   addBookContainer.classList.add("hidden");
 };
@@ -59,7 +66,10 @@ showAddBook.onclick = () => {
     addBookContainer.classList.remove("hidden");
   }
 };
-cancel.onclick = hideAddBook;
+addBookContainer.onclick = () => {
+  hideAddBook();
+  reset();
+};
 saveBook.onsubmit = (e) => {
   e.preventDefault();
   let title = document.getElementById("title").value,
