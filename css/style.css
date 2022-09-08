@@ -13,6 +13,23 @@ fieldset{
     align-items: center;
     gap: .5rem;
 }
+ul{
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+button{
+    background-color:#e0e0e0;
+    border: none;
+    border-radius:10px;
+	cursor:pointer;
+	color:#000000;
+	font-weight:bold;
+	padding: .5rem 1rem;
+}
+button:hover {
+	background-color:#d2cfcf;
+}
 .add-book{
     position: fixed;
     top: 0;
@@ -28,17 +45,34 @@ fieldset{
     opacity: 0;
     pointer-events: none;
 }
-button{
-    background-color:#e0e0e0;
-    border: none;
-    border-radius:10px;
-	cursor:pointer;
-	color:#000000;
-	font-weight:bold;
-	padding: .5rem 1rem;
+#books-info{
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    grid-template-rows: auto;
+    gap: 1rem;
+    margin: auto;
 }
-button:hover {
-	background-color:#d2cfcf;
+.book-card{
+    background-color: #000000;
+    color: #fff;
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 10px;
+    padding: 1rem;
+    gap: .5rem;
+    margin: auto;
+}
+.book-card_title{
+    font-weight: bold;
+    margin: .5rem auto;
+}
+.book-card_description{
+    font-size: 1rem;
+    text-align: center;
+    font-style: italic;
 }
 #form-submit{
     background-color: #fff;

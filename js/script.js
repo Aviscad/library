@@ -11,46 +11,66 @@ function Book(title, author, pages, read) {
   this.pages = pages;
   this.read = read;
 }
-Book.prototype.getInfo = function () {
-  return `${this.title} by ${this.author}, ${this.pages} pages, ${this.read}`;
-};
-
 function addToLibrary(book) {
   myLibrary.push(book);
   hideAddBook();
   reset();
 }
-function sendToDOM() {
-  booksInfo.textContent = "";
-  for (let i = 0; i <= myLibrary.length - 1; i++) {
-    let bookItem = document.createElement("div");
-    let ul = document.createElement("ul"),
-      liTitle = document.createElement("li"),
-      liAuthor = document.createElement("li"),
-      liPages = document.createElement("li"),
-      liRead = document.createElement("li"),
-      chkReadText = document.createElement("span"),
-      chkRead = document.createElement("input");
+function showBooks() {
+  booksInfo.innerHTML = "";
+  for (let i = 0; i < myLibrary.length; i++) {
+    let bookItem = document.createElement("div"),
+      chkRead = document.createElement("input"),
+      h1Title = document.createElement("h1"),
+      divDecription = document.createElement("div"),
+      buttonRead = document.createElement("button"),
+      buttonDelete = document.createElement("button");
 
     chkRead.setAttribute("type", "checkbox");
-    chkRead.setAttribute("disabled", "true");
+    chkRead.classList.add("read-checkbox");
+    buttonDelete.classList.add("delete");
+    bookItem.classList.add("book-card");
+    chkRead.onclick = (e) => {
+      editReadState(e);
+    };
 
-    liTitle.textContent = "Title: " + myLibrary[i].title;
-    ul.appendChild(liTitle);
-    liAuthor.textContent = "Author: " + myLibrary[i].author;
-    ul.appendChild(liAuthor);
-    liPages.textContent = "Pages: " + myLibrary[i].pages;
-    ul.appendChild(liPages);
+    buttonDelete.classList.add("delete");
+    buttonDelete.onclick = (e) => {
+      deleteBook(e);
+    };
 
-    chkReadText.textContent = "Read: ";
-    liRead.appendChild(chkReadText);
+    bookItem.classList.add("book-card");
     !myLibrary[i].read ? (chkRead.checked = false) : (chkRead.checked = true);
-    liRead.appendChild(chkRead);
-    ul.appendChild(liRead);
-    bookItem.appendChild(ul);
+
+    h1Title.textContent = myLibrary[i].title;
+    divDecription.textContent = `By ${myLibrary[i].author}, ${myLibrary[i].pages} pages.`;
+    buttonRead.textContent = "Read";
+    buttonDelete.textContent = "Delete";
+
+    bookItem.appendChild(h1Title);
+    h1Title.classList.add("book-card_title");
+    bookItem.appendChild(divDecription);
+    divDecription.classList.add("book-card_description");
+    bookItem.appendChild(chkRead);
+    bookItem.appendChild(buttonDelete);
     booksInfo.appendChild(bookItem);
   }
 }
+const editReadState = (e) => {
+  let title = e.target.parentElement.children[0].textContent,
+    currentCheckbox = e.target.parentElement.children[2].checked;
+  for (let i = 0; i < myLibrary.length; i++) {
+    if (myLibrary[i].title == title) {
+      myLibrary[i].read = currentCheckbox ? true : false;
+    }
+  }
+  showBooks();
+};
+const deleteBook = (e) => {
+  let title = e.target.parentElement.children[0].textContent;
+  myLibrary = myLibrary.filter((elements) => elements.title != title);
+  showBooks();
+};
 const reset = () => {
   document.getElementById("title").value = document.getElementById(
     "author"
@@ -66,22 +86,18 @@ showAddBook.onclick = () => {
     addBookContainer.classList.remove("hidden");
   }
 };
-addBookContainer.onclick = () => {
-  hideAddBook();
-  reset();
-};
 saveBook.onsubmit = (e) => {
   e.preventDefault();
   let title = document.getElementById("title").value,
     author = document.getElementById("author").value,
     pages = document.getElementById("pages").value,
     read = document.getElementById("read").checked;
+
   addToLibrary(new Book(title, author, pages, read));
-  sendToDOM();
+  showBooks();
 };
-window.onload = () => {
-  addToLibrary(new Book("All My Rage", "Sabaa Tahir", 384, false));
-  addToLibrary(new Book("Young Mungo", "Douglas Stuart", 392, true));
-  addToLibrary(new Book("The Final Strife", "Saara El-Arifi", 583, false));
-  sendToDOM();
-};
+
+addToLibrary(new Book("All My Rage", "Sabaa Tahir", 384, false));
+addToLibrary(new Book("Young Mungo", "Douglas Stuart", 392, true));
+addToLibrary(new Book("The Final Strife", "Saara El-Arifi", 583, false));
+showBooks();
