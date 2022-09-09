@@ -24,12 +24,25 @@ function showBooks() {
       h1Title = document.createElement("h1"),
       divDecription = document.createElement("div"),
       buttonRead = document.createElement("button"),
+      label = document.createElement("label"),
+      span = document.createElement("span"),
+      checkContainer = document.createElement("div"),
       buttonDelete = document.createElement("button");
 
     chkRead.setAttribute("type", "checkbox");
     chkRead.classList.add("read-checkbox");
     buttonDelete.classList.add("delete");
     bookItem.classList.add("book-card");
+
+    label.classList.add("switch");
+    span.classList.add("slider");
+    span.classList.add("round");
+    label.appendChild(chkRead);
+    label.appendChild(span);
+    checkContainer.textContent = "Read";
+    checkContainer.classList.add("check-container");
+    checkContainer.appendChild(label);
+
     chkRead.onclick = (e) => {
       editReadState(e);
     };
@@ -45,13 +58,13 @@ function showBooks() {
     h1Title.textContent = myLibrary[i].title;
     divDecription.textContent = `By ${myLibrary[i].author}, ${myLibrary[i].pages} pages.`;
     buttonRead.textContent = "Read";
-    buttonDelete.textContent = "Delete";
+    buttonDelete.innerHTML = "<i class='fas fa-trash-alt'></i> Delete";
 
     bookItem.appendChild(h1Title);
     h1Title.classList.add("book-card_title");
     bookItem.appendChild(divDecription);
     divDecription.classList.add("book-card_description");
-    bookItem.appendChild(chkRead);
+    bookItem.appendChild(checkContainer);
     bookItem.appendChild(buttonDelete);
     booksInfo.appendChild(bookItem);
   }

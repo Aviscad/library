@@ -6,37 +6,47 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/normalize.css">
     <link rel="stylesheet" href="./css/style.css">
+    <script src="https://kit.fontawesome.com/eeb3265b69.js" crossorigin="anonymous"></script>
     <title>Library</title>
 </head>
 <body>
-    <div>
-        <button id="show-addbook">Add Book</button>
-    </div>
-    <div id="books-info"></div>
-
-    <!-- ADD BOOK DIAOG -->
-    <div class="add-book hidden">
-        <form id="form-submit">
-            <legend>Add New Book</legend>
-            <fieldset>
-                <input type="text" name="title" id="title" placeholder="Title" required>
-            </fieldset>
-            <fieldset>
-                <input type="text" name="author" id="author" placeholder="Author" required>
-            </fieldset>
-            <fieldset>
-                <input type="number" name="pages" id="pages" min="1" placeholder="Pages" required>
-            </fieldset>
-            <fieldset>
-                <label for="read">Have you read it?</label>
-                <input type="checkbox" name="read" id="read">
-            </fieldset>
-            <fieldset>
-                <button type="submit" id="save-book">Save</button>
-            </fieldset>
-        </form>
-    </div>
+    <header>
+        <button id="show-addbook"><i class="fas fa-plus"></i> Add Book</button>
+    </header>
+    <main>
+        <div id="books-info"></div>
+        <!-- ADD BOOK DIAOG -->
+        <div class="add-book hidden">
+            <form id="form-submit">
+                <legend>Add New Book
+                    <span><i class="fas fa-times"></i></span>
+                </legend>
+                <fieldset>
+                    <input type="text" name="title" id="title" placeholder="Title" class="input-text" required>
+                </fieldset>
+                <fieldset>
+                    <input type="text" name="author" id="author" placeholder="Author" class="input-text" required>
+                </fieldset>
+                <fieldset>
+                    <input type="number" name="pages" id="pages" min="1" placeholder="Pages" class="input-text" required>
+                </fieldset>
+                <fieldset>
+                    <label for="read">Have you read it?</label>
+                    <label class="switch">
+                        <input type="checkbox" name="read" id="read">
+                        <span class="slider round"></span>
+                    </label>
+                </fieldset>
+                <fieldset>
+                    <button type="submit" id="save-book">Save</button>
+                </fieldset>
+            </form>
+        </div>
+    </main>
     
+
+    <!-- https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_switch -->
+
     <script src="./js/script.js"></script>
 </body>
 </html>

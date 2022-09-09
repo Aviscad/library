@@ -1,9 +1,20 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+:root{
+    --main-color: #FFC090;
+    --secundary-color: #F7F6DC;
+}
 html, body{
     font-size: 16px;
+    background-color: var(--secundary-color);
+    font-family: 'Roboto', sans-serif;
 }
 legend{
     text-align: center;
     font-weight: bold;
+    font-size: 1.25rem;
+}
+header{
+    padding: 1rem;
 }
 fieldset{
     border: none;
@@ -19,16 +30,17 @@ ul{
     margin: 0;
 }
 button{
-    background-color:#e0e0e0;
-    border: none;
     border-radius:10px;
 	cursor:pointer;
-	color:#000000;
 	font-weight:bold;
 	padding: .5rem 1rem;
+    transition-duration: 0.4s;
+    background-color: white;
+    color: #000;
+    border: 2px solid var(--main-color);
 }
 button:hover {
-	background-color:#d2cfcf;
+    border: 2px solid #000;
 }
 .add-book{
     position: fixed;
@@ -47,14 +59,13 @@ button:hover {
 }
 #books-info{
     display: grid;
-    grid-template-columns: repeat(3,1fr);
+    grid-template-columns: 1r;
     grid-template-rows: auto;
     gap: 1rem;
     margin: auto;
 }
 .book-card{
-    background-color: #000000;
-    color: #fff;
+    background-color: var(--main-color);
     width: 300px;
     display: flex;
     flex-direction: column;
@@ -75,7 +86,7 @@ button:hover {
     font-style: italic;
 }
 #form-submit{
-    background-color: #fff;
+    background-color: var(--secundary-color);
     padding: 1rem 2.5rem;
     border-radius: 5px;
     display: flex;
@@ -83,3 +94,86 @@ button:hover {
     gap: .75rem;
     box-shadow: -1px 1px 5px 0px rgba(0,0,0,0.6);
 }
+
+.input-text { 
+    padding:11px;   
+    border: 2px solid var(--main-color);
+    font-size: 1.2rem;
+    border-radius:11px;
+    box-shadow: 2px 1px 5px 0px rgba(42,42,42,.75);
+} 
+.input-text:focus { 
+    outline:none;
+} 
+
+.button:hover {
+    background-color: var(--main-color);
+    color: white;
+}
+
+/* SWITCH STYLES */
+.check-container{
+    display: flex;
+    align-items: center;
+    gap:.5rem;
+}
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 55px;
+    height: 28px;
+  }
+  
+  .switch input { 
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+  
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+  
+  .slider:before {
+    position: absolute;
+    content: "";
+    height: 20px;
+    width: 20px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+  
+  input:checked + .slider {
+    background-color: #000;
+  }
+  
+  input:focus + .slider {
+    box-shadow: 0 0 1px #000000;
+  }
+  
+  input:checked + .slider:before {
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(26px);
+  }
+  
+  /* Rounded sliders */
+  .slider.round {
+    border-radius: 34px;
+  }
+  
+  .slider.round:before {
+    border-radius: 50%;
+  }
+/* --------------*/
