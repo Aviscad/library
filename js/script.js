@@ -1,6 +1,7 @@
 let myLibrary = [],
   booksInfo = document.querySelector("#books-info"),
   cancel = document.getElementById("cancel"),
+  closeIcon = document.querySelector(".fa-times"),
   addBookContainer = document.querySelector(".add-book"),
   showAddBook = document.getElementById("show-addbook"),
   saveBook = document.querySelector("#form-submit");
@@ -70,11 +71,12 @@ function showBooks() {
   }
 }
 const editReadState = (e) => {
-  let title = e.target.parentElement.children[0].textContent,
-    currentCheckbox = e.target.parentElement.children[2].checked;
+  let title =
+    e.target.parentElement.parentElement.parentElement.children[0].textContent;
+  // currentCheckbox = e.target.parentElement.children[2].checked;
   for (let i = 0; i < myLibrary.length; i++) {
     if (myLibrary[i].title == title) {
-      myLibrary[i].read = currentCheckbox ? true : false;
+      console.log(myLibrary[i]);
     }
   }
   showBooks();
@@ -109,6 +111,12 @@ saveBook.onsubmit = (e) => {
   addToLibrary(new Book(title, author, pages, read));
   showBooks();
 };
+window.onkeyup = (e) => {
+  if (e.key == "Escape") {
+    hideAddBook();
+  }
+};
+closeIcon.onclick = hideAddBook;
 
 addToLibrary(new Book("All My Rage", "Sabaa Tahir", 384, false));
 addToLibrary(new Book("Young Mungo", "Douglas Stuart", 392, true));
