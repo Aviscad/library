@@ -109,4 +109,12 @@ closeIcon.onclick = hideAddBook;
 addToLibrary(new Book("All My Rage", "Sabaa Tahir", 384, false));
 addToLibrary(new Book("Young Mungo", "Douglas Stuart", 392, true));
 addToLibrary(new Book("The Final Strife", "Saara El-Arifi", 583, false));
+addToLibrary(
+  new Book(
+    "Quiet: The Power of Introverts in a World That Can't Stop Talking",
+    "Susan Cain",
+    368,
+    true
+  )
+);
 showBooks();
