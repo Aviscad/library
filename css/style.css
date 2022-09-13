@@ -56,6 +56,7 @@ button:hover {
 input[type="checkbox"]{
     width: 25px;
     height: 25px;
+    cursor: pointer;
 }
 footer{
     display: flex;
@@ -95,7 +96,6 @@ footer{
 }
 .fa-times{
     cursor: pointer;
-    padding: .5rem;
     font-size: 1.75rem;
 }
 .fa-times:hover{
